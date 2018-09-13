@@ -17,7 +17,7 @@ func (rabbitmq *RabbitMQ) Connect(config *Config) (result bool, err error) {
 	conn, err := amqp.Dial(config.ConString)
 	// defer conn.Close()
 	if err != nil {
-		return false, ErrConnection
+		return false, err
 	}
 	rabbitmq.Connection = conn
 	getChannel(rabbitmq, conn)
